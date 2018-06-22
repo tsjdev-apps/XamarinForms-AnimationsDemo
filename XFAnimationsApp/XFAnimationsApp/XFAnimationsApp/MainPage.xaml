@@ -1,14 +1,76 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:local="clr-namespace:XFAnimationsApp"
+             xmlns:markupExtensions="clr-namespace:XFAnimationsApp.MarkupExtensions"
              x:Class="XFAnimationsApp.MainPage">
 
-    <StackLayout>
-        <!-- Place new controls here -->
-    	<Label Text="Welcome to Xamarin.Forms!" 
-           HorizontalOptions="Center"
-           VerticalOptions="CenterAndExpand" />
-    </StackLayout>
+    <ContentPage.Content>
+        <Grid RowSpacing="6">
+            <Grid.Margin>
+                <OnPlatform x:TypeArguments="Thickness">
+                    <On Platform="iOS"
+                        Value="0,32,0,0" />
+                </OnPlatform>
+            </Grid.Margin>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+            <Label Text="Xamarin.Forms Animations"
+                   FontSize="Large"
+                   VerticalOptions="Center"
+                   HorizontalOptions="Center"
+                   Grid.Row="0"
+                   Margin="12" />
+
+            <Grid Grid.Row="1"
+                  RowSpacing="4"
+                  ColumnSpacing="4"
+                  Margin="6,0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+
+                <Button Text="Translate"
+                        Clicked="TranslateButtonOnClicked"
+                        BackgroundColor="#ffff91"
+                        Grid.Row="0"
+                        Grid.Column="0" />
+
+                <Button Text="Scale"
+                        Clicked="ScaleButtonOnClicked"
+                        BackgroundColor="#c5e6a6"
+                        Grid.Row="0"
+                        Grid.Column="1" />
+
+                <Button Text="Rotate"
+                        Clicked="RotateButtonOnClicked"
+                        BackgroundColor="#52d1dc"
+                        Grid.Row="1"
+                        Grid.Column="0" />
+
+                <Button Text="Fade"
+                        Clicked="FadeButtonOnClicked"
+                        BackgroundColor="#bc9ec1"
+                        Grid.Row="1"
+                        Grid.Column="1" />
+
+            </Grid>
+
+            <Image x:Name="SampleImage"
+                   Source="{markupExtensions:ImageResource XFAnimationsApp.Assets.elphi.jpg}"
+                   Aspect="AspectFit"
+                   Margin="12"
+                   Grid.Row="2" />
+
+        </Grid>
+    </ContentPage.Content>
 
 </ContentPage>
